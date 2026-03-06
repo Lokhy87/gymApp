@@ -18,7 +18,7 @@ Frontend: JavaScript / TypeScript con Angular
 
 Backend: PHP con Symfony
 
-- Alberto Volta Sanmateu
+- Alberto Bolta Sanmateu
 - Manuel Vicente Granero Ferreira
 - Roberto Jesus Sanchez Camacho
 
