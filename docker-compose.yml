@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  gymflow-php-server:
+    container_name: gymflow_php_server
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    restart: unless-stopped
+    stdin_open: true
+    links:
+      - gymflow-db-server
+    ports:
+      - "8050:8000"
+    volumes:
+      - ./:/var/www/html:delegated
+    networks:
+      - gymflow_network
+
+  gymflow-db-server:
+    container_name: gymflow_db_server
+    image: mariadb:10.11
+    ports:
+      - "3350:3306"
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - gymflow_db_mysql:/var/lib/mysql
+    networks:
+      - gymflow_network
+
+volumes:
+  gymflow_db_mysql:
+
+networks:
+  gymflow_network:
