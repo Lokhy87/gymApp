@@ -1,0 +1,13 @@
+.main-content {
+    margin-left: clamp(300px, 20vw, 450px); /*This has to match the width of the sidebar*/
+}
+
+@media (max-width: 991px) {
+    .main-content {
+        margin: 50px auto auto auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}

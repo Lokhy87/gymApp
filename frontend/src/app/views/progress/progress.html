@@ -1,0 +1,42 @@
+<h2 class="text-center">See your progress</h2>
+                <form class="row g-3 align-items-end justify-content-center text-white">
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label">Exercises</label>
+                        <select class="form-select">
+                            <option selected>Choose...</option>
+                            <option>Rows</option>
+                            <option>Curls</option>
+                            <option>Flies</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label">Time Range</label>
+
+                        <div class="d-flex gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="range" id="r12">
+                                <label class="form-check-label" for="r12">12 mo</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="range" id="r6" checked>
+                                <label class="form-check-label" for="r6">6 mo</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="range" id="r3">
+                                <label class="form-check-label" for="r3">3 mo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-grid">
+                        <button class="btn">Apply</button>
+                    </div>
+
+                </form>
+                <div class="m-5">
+                    <canvas #chartCanvas></canvas>
+                </div>

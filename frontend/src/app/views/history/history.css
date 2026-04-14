@@ -1,0 +1,38 @@
+/* Grid borders */
+.fc-theme-standard td,
+.fc-theme-standard .fc-scrollgrid {
+    border: 1px solid rgba(1, 168, 188, 0.3);
+}
+
+/* days of week */
+.fc-theme-standard th {
+    background-color: #01a8bc;
+    border: none;
+}
+
+/* weekday text color */
+.fc-col-header-cell-cushion {
+    color: #1b1b1b;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* dates */
+.fc-daygrid-day-number {
+    color: #01a8bc;
+    font-weight: 500;
+}
+
+.fc-daygrid-day:hover {
+    background-color: rgba(1, 168, 188, 0.1);
+    cursor: pointer;
+}
+
+/* Today */
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(1, 168, 188, 0.2);
+}
+
+.fc a {
+    text-decoration: none;
+}

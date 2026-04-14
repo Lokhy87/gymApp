@@ -1,0 +1,179 @@
+.contrail-one-regular {
+  font-family: "Contrail One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#sidebar {
+    background-color: rgb(36, 36, 36) !important;
+    width: clamp(300px, 20vw, 450px);
+    height: 100vh;
+}
+
+.main-content {
+    margin-left: clamp(300px, 20vw, 450px); /*This has to match the width of the sidebar*/
+}
+
+@media (max-width: 991px) {
+    .main-content {
+        margin: 50px auto auto auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+body {
+    background-color: rgb(27, 27, 27);
+}
+
+h1 {
+    color: #01a8bc;
+    font-family: 'Contrail One';
+    font-size: clamp(16px, 4rem, 75px);
+}
+
+.btn {
+    color: #01a8bc;
+    font-size: clamp(16px, 2rem, 40px);
+}
+
+h2 {
+    color: whitesmoke;
+    font-size: clamp(16px, 2.5rem, 50px)
+}
+
+.search-btn:hover {
+    background-color: #01a8bc;
+}
+
+.nav-item a.nav-link,
+.profile a {
+    color: #01a8bc;
+    font-size: clamp(12px, 2rem, 24px);
+    text-decoration: none;
+}
+
+.nav-item a.nav-link:hover,
+.profile a:hover {
+    color: #01a8bc;
+    text-decoration: underline;
+}
+
+.nav-item a.nav-link.active {
+    text-decoration: underline;
+}
+
+.search-bar {
+    max-width: 700px;
+}
+
+.card {
+    height: clamp(300px, 20vw, 600px);
+    width: clamp(300px, 20vw, 600px);
+    background-color: #01a8bc;
+}
+
+.cards {
+    gap: 2rem;
+}
+
+/*HISTORY*/
+
+/* Grid borders */
+.fc-theme-standard td,
+.fc-theme-standard .fc-scrollgrid {
+    border: 1px solid rgba(1, 168, 188, 0.3);
+}
+
+/* days of week */
+.fc-theme-standard th {
+    background-color: #01a8bc;
+    border: none;
+}
+
+/* weekday text color */
+.fc-col-header-cell-cushion {
+    color: #1b1b1b;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* dates */
+.fc-daygrid-day-number {
+    color: #01a8bc;
+    font-weight: 500;
+}
+
+.fc-daygrid-day:hover {
+    background-color: rgba(1, 168, 188, 0.1);
+    cursor: pointer;
+}
+
+/* Today */
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(1, 168, 188, 0.2);
+}
+
+.fc a {
+    text-decoration: none;
+}
+
+
+.modal-content {
+    border-radius: 12px;
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.exercise-card {
+    background-color: rgb(36, 36, 36);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.2s;
+}
+
+.exercise-card:hover {
+    background-color: rgb(45, 45, 45);
+}
+
+.set-item {
+    background: rgb(36, 36, 36);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* PROGRESS */
+
+#myChart {
+    height: clamp(250px, 60vh, 800px);
+    max-width: 100%;
+}
+
+form {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-label {
+    color: #ccc;
+}
+
+.form-select,
+.form-control {
+    background-color: rgb(27, 27, 27);
+    color: white;
+    border: 1px solid #444;
+}
+
+.form-select:focus {
+    border-color: #01a8bc;
+    box-shadow: 0 0 0 0.2rem rgba(1,168,188,0.25);
+}
