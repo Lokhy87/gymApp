@@ -10,19 +10,6 @@
     height: 100vh;
 }
 
-.main-content {
-    margin-left: clamp(300px, 20vw, 450px); /*This has to match the width of the sidebar*/
-}
-
-@media (max-width: 991px) {
-    .main-content {
-        margin: 50px auto auto auto;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
-}
 
 body {
     background-color: rgb(27, 27, 27);
@@ -37,6 +24,10 @@ h1 {
 .btn {
     color: #01a8bc;
     font-size: clamp(16px, 2rem, 40px);
+}
+
+.btn:hover {
+    background-color: #01a9bc56;
 }
 
 h2 {
@@ -152,10 +143,7 @@ h2 {
 
 /* PROGRESS */
 
-#myChart {
-    height: clamp(250px, 60vh, 800px);
-    max-width: 100%;
-}
+
 
 form {
     padding: 20px;

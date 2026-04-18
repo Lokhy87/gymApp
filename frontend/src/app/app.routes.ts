@@ -11,6 +11,7 @@ import { Home } from './views/home/home';
 import { History } from './views/history/history';
 import { Progress } from './views/progress/progress';
 import { Exercises } from './views/exercises/exercises';
+import { Profile } from './views/profile/profile';
 
 export const routes: Routes = [
     {path: '', component: PublicLayout, children: [
@@ -22,6 +23,7 @@ export const routes: Routes = [
         { path: 'home', component: Home },
         { path: 'history', component: History},
         { path: 'progress', component: Progress },
-        { path: 'exercises', component: Exercises}
+        { path: 'exercises', component: Exercises},
+        { path: 'profile', component: Profile }
     ]}
 ];
