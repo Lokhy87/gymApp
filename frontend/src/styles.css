@@ -6,8 +6,6 @@
 
 #sidebar {
     background-color: rgb(36, 36, 36) !important;
-    width: clamp(300px, 20vw, 450px);
-    height: 100vh;
 }
 
 
@@ -35,10 +33,6 @@ h2 {
     font-size: clamp(16px, 2.5rem, 50px)
 }
 
-.search-btn:hover {
-    background-color: #01a8bc;
-}
-
 .nav-item a.nav-link,
 .profile a {
     color: #01a8bc;
@@ -57,13 +51,29 @@ h2 {
 }
 
 .search-bar {
+    flex: 1;
     max-width: 700px;
+    background: transparent;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 8px;
+    color: white;
+}
+
+input[type=search]:focus {
+    border-color: #01a8bc;
 }
 
 .card {
     height: clamp(300px, 20vw, 600px);
     width: clamp(300px, 20vw, 600px);
     background-color: #01a8bc;
+    border: 1px solid #01a8bc;
+    transition: transform .2s ease, box-shadow .2s ease
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px black;
 }
 
 .cards {
@@ -143,7 +153,9 @@ h2 {
 
 /* PROGRESS */
 
-
+.chart-wrapper {
+    height: 50vh;
+}
 
 form {
     padding: 20px;

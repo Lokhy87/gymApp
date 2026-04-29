@@ -1,7 +1,25 @@
-#sidebar {
-    background-color: rgb(36, 36, 36) !important;
-    width: clamp(300px, 20vw, 450px);
-    height: 100vh;
+@media (min-width: 992px) {
+    #sidebar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        height: 100dvh;
+        width: clamp(300px, 20vw, 450px);
+        background-color: rgb(36, 36, 36) !important;
+        display: flex !important;
+        overflow-y: auto;
+    }
+
+}
+
+@media (max-width: 991.98) {
+    #sidebar {
+        background-color: rgb(36, 36, 36) !important;
+        height: 100dvh;
+        max-height: 100dvh;
+        overflow-y: auto !important;
+        width: clamp(260px, 75vw, 430px) !important;
+    }
 }
 
 body {
@@ -11,32 +29,41 @@ body {
 h1 {
     color: #01a8bc;
     font-family: 'Contrail One';
-    font-size: clamp(16px, 4rem, 75px);
+    font-size: clamp(12px, 4rem, 75px);
 }
 
 .btn {
     color: #01a8bc;
-    font-size: clamp(16px, 2rem, 40px);
+    font-size: clamp(10px, 2rem, 40px);
 }
 
 h2 {
     color: whitesmoke;
-    font-size: clamp(16px, 2.5rem, 50px)
+    font-size: clamp(10px, 2.5rem, 50px)
 }
 
-.nav-item a.nav-link,
-.profile a {
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: clamp(14px, 2.2vh, 22px);
     color: #01a8bc;
-    font-size: clamp(12px, 2rem, 24px);
     text-decoration: none;
 }
 
-.nav-item a.nav-link:hover,
-.profile a:hover {
-    color: #01a8bc;
+.nav-link:hover {
     text-decoration: underline;
 }
 
-.nav-item a.nav-link.active {
-    text-decoration: underline;
+.sidebar-header {
+    padding: clamp(10px, 3vh, 40px);
+}
+
+.sidebar-nav {
+    flex-grow: 1;
+    padding: clamp(10px, 3vh, 40px);
+}
+
+.sidebar-footer {
+    padding: clamp(10px, 3vh, 30px);
 }
