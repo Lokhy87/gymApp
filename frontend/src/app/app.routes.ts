@@ -13,7 +13,7 @@ import { Progress } from './views/progress/progress';
 import { Exercises } from './views/exercises/exercises';
 import { Profile } from './views/profile/profile';
 
-export const routes: Routes = [
+export const routes: Routes = [ //https://stackoverflow.com/questions/75996515/angular-use-different-layouts-for-different-routes//
     {path: '', component: PublicLayout, children: [
         {path: '', component: InitialPage},
         {path: 'login', component: Login},

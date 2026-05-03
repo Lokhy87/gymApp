@@ -11,18 +11,11 @@ import interactionPlugin from '@fullcalendar/interaction';
 })
 export class History {
 
-  calendarOptions = {
+  calendarOptions: any = {
     plugins: [dayGridPlugin, interactionPlugin],
-    initialView: 'dayGridMonth',
-
+    initialView: window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth',
     dateClick: (info: any) => {
-      console.log('Clicked date:', info.dateStr);
-    },
-
-    headerToolbar: {
-      left: 'prev,next',
-      center: 'title',
-      right: ''
+      console.log(info.dateStr);
     }
   };
 }

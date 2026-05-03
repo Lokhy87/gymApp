@@ -1,10 +1,10 @@
 <div class="container">
 <h2 class="text-center pt-5">See your progress</h2>
-                <form class="row g-3 align-items-end justify-content-center text-white">
+                <form method="POST" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" class="row g-3 align-items-end justify-content-center text-white">
 
                     <div class="col-12 col-md-4">
                         <label class="form-label">Exercises</label>
-                        <select class="form-select">
+                        <select formControlName="searchType" class="form-select">
                             <option selected>Choose...</option>
                             <option>Rows</option>
                             <option>Curls</option>
@@ -17,28 +17,28 @@
 
                         <div class="d-flex gap-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="range" id="r12">
+                                <input formControlName="range" value="12" class="form-check-input" type="radio" id="r12">
                                 <label class="form-check-label" for="r12">12 mo</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="range" id="r6" checked>
+                                <input formControlName="range" value="6" class="form-check-input" type="radio" id="r6" checked>
                                 <label class="form-check-label" for="r6">6 mo</label>
                             </div>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="range" id="r3">
+                                <input formControlName="range" value="3" class="form-check-input" type="radio" id="r3">
                                 <label class="form-check-label" for="r3">3 mo</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-2 d-grid">
-                        <button class="btn">Apply</button>
+                        <button type="submit" class="btn">Apply</button>
                     </div>
 
                 </form>
                 <div class="chart-wrapper m-5">
-                    <canvas #chartCanvas></canvas>
+                    <canvas id=myChart></canvas>
                 </div>
 </div>

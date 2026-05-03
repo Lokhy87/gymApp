@@ -4,49 +4,9 @@
         <input class="m-2 p-2 search-bar" type="search" placeholder="Search Exercises" aria-label="Search"/>
     </form>
 
-<div class="cards d-flex flex-wrap align-items-center justify-content-center">
-                    
-    <a class="card" routerLink="/exercises"> <!-- Href to routerLink in Angular-->
-        <img src="assets/images/back.jpg" alt="" class="img rounded">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title">Back</h5>
-        </div>
-    </a>
-
-    <a class="card"> <!-- Href to routerLink in Angular-->
-        <img src="assets/images/back.jpg" alt="" class="img rounded">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title">Chest</h5>
-        </div>
-    </a>
-
-    <a class="card"> <!-- Href to routerLink in Angular-->
-        <img src="assets/images/back.jpg" alt="" class="img rounded">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title">Core</h5>
-        </div>
-    </a>
-
-    <a class="card"> <!-- Href to routerLink in Angular-->
-        <img src="assets/images/back.jpg" alt="" class="img rounded">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title">Legs</h5>
-        </div>
-    </a>
-
-    <a class="card"> <!-- Href to routerLink in Angular-->
-        <img src="assets/images/back.jpg" alt="" class="img rounded">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title">Arms</h5>
-        </div>
-    </a>
-
-    <a class="card"> <!-- Href to routerLink in Angular-->
-        <img src="assets/images/back.jpg" alt="" class="img rounded">
-        <div class="card-body d-flex justify-content-center align-items-center">
-            <h5 class="card-title">Shoulders</h5>
-        </div>
-    </a>
-
-</div>
+    <div class="cards d-flex flex-wrap align-items-center justify-content-center">             
+        @for (group of muscleGroups; track group) {
+            <app-card [title]="group" [image]="'/assets/images/back.jpg'" (cardClick)="goToExercises(group)"></app-card>
+        }
+    </div>
 </div>

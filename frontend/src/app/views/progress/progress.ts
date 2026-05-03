@@ -1,76 +1,87 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { ReactiveFormsModule, FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-progress',
-  imports: [],
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './progress.html',
   styleUrl: './progress.css',
 })
-export class Progress implements AfterViewInit {
-@ViewChild('chartCanvas') chartCanvas!: ElementRef;
-
+export class Progress {
+  
+  reactiveForm = new FormGroup ({
+    searchType: new FormControl(''),
+    range: new FormControl(''),
+  })
+  
   chart: any;
 
-  selectedExercise = 'curls';
-  range = '6';
+  onSubmit() {
+    const searchType = (this.reactiveForm.value.searchType ?? '').toLowerCase();
+    const range = (this.reactiveForm.value.range ?? '').toLowerCase();
+
+    console.log('Exercise:', searchType);
+    console.log('Range:', range);
+
+    const data = this.getDataBasedOnSelection(searchType, range);
+
+    if (!this.chart) {
+      this.createChart();
+    }
+
+    this.chart.data.labels = data.labels;
+    this.chart.data.datasets[0].data = data.values;
+
+    this.chart.update();
+  }
 
   ngAfterViewInit() {
     this.createChart();
   }
 
   createChart() {
-    this.chart = new Chart(this.chartCanvas.nativeElement, {
-      type: 'line',
-      data: {
+  const canvas = document.getElementById('myChart') as HTMLCanvasElement;
+
+  this.chart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        data: [],
+        borderColor: '#01a8bc'
+      }]
+    }
+  });
+}
+
+  getDataBasedOnSelection(searchType: string | null, range: string | null) {
+
+    if (searchType === 'curls' && range === '6') {
+      return {
         labels: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
-        datasets: [{
-          label: 'Curls (kg)',
-          data: [20, 22.5, 25, 27.5, 30, 32.5],
-          tension: 0.3,
-          borderWidth: 2,
-          borderColor: '#01a8bc',
-          pointBackgroundColor: '#01a8bc',
-          fill: true,
-          backgroundColor: 'rgba(1, 168, 188, 0.1)'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            labels: {
-              color: 'white'
-            }
-          }
-        },
-        scales: {
-          x: {
-            ticks: { color: 'white' },
-            grid: { color: 'rgba(255,255,255,0.1)' }
-          },
-          y: {
-            ticks: { color: 'white' },
-            grid: { color: 'rgba(255,255,255,0.1)' }
-          }
-        }
-      }
-    });
-  }
+        values: [20, 22, 25, 27, 30, 32]
+      };
+    }
 
-  updateChart() {
-    if(!this.chart) return;
-    // replace w/ real data
-    const newData = this.getFakeData();
+    if (searchType === 'rows') {
+      return {
+        labels: ['Nov', 'Dec', 'Jan', 'Feb'],
+        values: [40, 42, 45, 47]
+      };
+    }
 
-    this.chart.data.datasets[0].data = newData;
-    this.chart.update();
-  }
+    if (searchType === 'flies') {
+      return {
+        labels: ['Nov', 'Dec', 'Jan', 'Feb'],
+        values: [10, 12, 13, 15]
+      };
+    }
 
-  getFakeData() {
-    if (this.range === '3') return [25, 27, 28];
-    if (this.range === '6') return [20, 22, 25, 27, 30, 32];
-    return [15, 18, 20, 22, 25, 28, 30, 32, 34, 36, 38, 40];
+    return {
+      labels: [],
+      values: []
+    };
   }
 }
