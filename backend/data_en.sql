@@ -27,7 +27,7 @@ INSERT INTO exercises (id, name, muscle_group_id) VALUES
                                                       (19, 'Lunges', 3), (20, 'Leg press', 3), (21, 'Hack squat', 3),
                                                       (22, 'Box step-ups', 3), (23, 'Military press', 4), (24, 'Arnold press', 4),
                                                       (25, 'Front raises', 4), (26, 'Lateral raises', 4), (27, 'Upright row', 4),
-                                                      (28, 'Shoulder flexions', 4), (29, 'Rear delt raises', 4), (30, 'Bicep curl', 5),
+                                                      (28, 'Shoulder push-up', 4), (29, 'Rear delt raises', 4), (30, 'Bicep curl', 5),
                                                       (31, 'Preacher curl', 5), (32, 'Hammer curl', 5), (33, 'Tricep extension', 5),
                                                       (34, 'Skull crusher', 5), (35, 'Diamond push-ups', 5), (36, 'Dips', 5),
                                                       (37, 'Plank', 6), (38, 'Dead bug', 6), (39, 'Bird dog', 6),
