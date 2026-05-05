@@ -28,7 +28,7 @@ INSERT INTO muscles (id, muscle_group_id, name) VALUES
 INSERT INTO exercises (id, name, image , muscle_group_id) VALUES
                                                       (1, 'Bench Press', 'https://drive.google.com/uc?id=1nsGz08zBI4U6057Bk4DdYXJE4MoutVq2', 1),
                                                       (2, 'Incline Bench Press', 'https://drive.google.com/uc?id=1h-Kbj7owjoV1DtXD-pS8Dd1p1dvdhHI5', 1),
-                                                      (3, 'Dumbbell Flyes', 'https://drive.usercontent.google.com/download?id=1vvHWOccDhsQQ7CjJiqED7xr45S_16-rJ&authuser=0', '', 1),
+                                                      (3, 'Dumbbell Flyes', 'https://drive.usercontent.google.com/download?id=1vvHWOccDhsQQ7CjJiqED7xr45S_16-rJ&authuser=0', 1),
                                                       (4, 'Cable Crossovers', '', 1),
                                                       (5, 'Dumbbell Pullover', 'https://drive.usercontent.google.com/download?id=1v_-gMAnBW_h_QuTnHromBiUnMfWoaaOT&authuser=0', 1),
                                                       (6, 'Chest Dips', '', 1),
