@@ -36,6 +36,7 @@ final class ApiController extends AbstractController
             $data [ ] = [
                 'id' => $exercise->getId(),
                 'name' => $exercise->getName(),
+                'image' => $exercise->getImage(),
                 'muscle_group_id' => $exercise->getMuscleGroup()->getId(),
             ];
         }
