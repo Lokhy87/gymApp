@@ -2,8 +2,8 @@
 INSERT INTO muscle_groups (id, name, image) VALUES
                                                 (1, 'Chest', 'https://drive.google.com/uc?id=1J4ZrnHY8Coi4Jqd_IKErNuxOKWn9yVO2'),
                                                 (2, 'Back', 'https://drive.google.com/uc?id=1W7D7mdGuplJeru-0UzJGowO-RaJr4Xz7'),
-                                                (3, 'Shoulder', 'https://drive.google.com/uc?id=1np00rXyMBjua5wXdofCMxFccPfaixEmQ'),
-                                                (4, 'Legs', 'https://drive.google.com/uc?id=1U9Ztw3MCVmDFnHMbJdP9qsIyTm00hzwf'),
+                                                (3, 'Legs', 'https://drive.google.com/uc?id=1U9Ztw3MCVmDFnHMbJdP9qsIyTm00hzwf'),
+                                                (4, 'Shoulder', 'https://drive.google.com/uc?id=1np00rXyMBjua5wXdofCMxFccPfaixEmQ'),
                                                 (5, 'Arms', 'https://drive.google.com/uc?id=1BRK3udwDfBPl-IbXCy1m3cHHbhOuebVd'),
                                                 (6, 'Core', 'https://drive.google.com/uc?id=1Ur8z6G8OJJQNFOTtzTz_yKQb9fD9YxKc');
 
@@ -47,14 +47,12 @@ INSERT INTO exercises (id, name, image , muscle_group_id) VALUES
                                                       (5, 'Dumbbell Pullover', 'https://drive.usercontent.google.com/download?id=1v_-gMAnBW_h_QuTnHromBiUnMfWoaaOT&authuser=0', 1),
                                                       (6, 'Chest Dips', 'https://drive.google.com/uc?export=view&id=1Az4K1c7WWRNigBIiDJkl3M6SVoulUCe_', 1),
                                                       (7, 'Push-Ups', 'https://drive.google.com/uc?id=1HdVrOHC1bh8elb_anNp_5TJ1GEIYYHb2', 1),
-
                                                       (8, 'Deadlift', 'https://drive.google.com/uc?export=view&id=112h7bp0qsEqSdHRgpjcsUnLjzyhp2ZNa', 2),
                                                       (9, 'Barbell Row', 'https://drive.google.com/uc?export=view&id=17i8NxLS4OOZ_J5VxMgOs33LV8eY13ybj', 2),
                                                       (10, 'Seated Cable Row', 'https://drive.google.com/uc?export=view&id=1otpDB9uq4AEvXEdx5scCDhzEnh_rLYXN', 2),
                                                       (11, 'Pull-Ups', 'https://drive.google.com/uc?export=view&id=1lbHsqK-W_9g2NGrisUTwCQL1y7wyRxIf', 2),
                                                       (12, 'High Pulley Rows', 'https://drive.google.com/uc?export=view&id=1Hdby7e6BEdu4LURec2J7JzxjQwP-c6YS', 2),
                                                       (13, 'Shrugs', 'https://drive.google.com/uc?export=view&id=1lzQrnB2Lb46JrRp5r-ePGg7DgwkeFaik', 2),
-
                                                       (14, 'Squats', 'https://drive.google.com/uc?export=view&id=1mQhsDGHjZexOTh12tdqe_UFp0jRHU6TY', 3),
                                                       (15, 'Leg Extension', 'https://drive.google.com/uc?export=view&id=1lzQrnB2Lb46JrRp5r-ePGg7DgwkeFaik', 3),
                                                       (16, 'Leg Curl', 'https://drive.google.com/uc?export=view&id=1S6Xo3eqLkM05J4oe-ONzD1qoLMHhli0Y', 3),
@@ -64,7 +62,6 @@ INSERT INTO exercises (id, name, image , muscle_group_id) VALUES
                                                       (20, 'Leg Press', 'https://drive.google.com/uc?export=view&id=171CcQ5J1PsuHM20o5v-w6RQEJBeTJx22', 3),
                                                       (21, 'Hack Squat', 'https://drive.google.com/uc?export=view&id=18PXjtfQ0KwOhtJms5d-55GckQ71Nh5Xy', 3),
                                                       (22, 'Box Step-Ups', 'https://drive.google.com/uc?export=view&id=16dHcu1W6kWBm9d_WYS6gffOWGlXNVzKB', 3),
-
                                                       (23, 'Overhead Press', 'https://drive.google.com/uc?export=view&id=1ImRj0l8O92mV84i7V0JN_mBKNWtpzWzp', 4),
                                                       (24, 'Arnold Press', 'https://drive.google.com/uc?export=view&id=10F_bwBC22RIIskZogddplbSocNYNkKYM', 4),
                                                       (25, 'Front Raises', 'https://drive.google.com/uc?export=view&id=13bEaZQYIBCx1kPdeCw3Qf3ApB2Ic-GdP',4),
@@ -72,7 +69,6 @@ INSERT INTO exercises (id, name, image , muscle_group_id) VALUES
                                                       (27, 'Upright Row', 'https://drive.google.com/uc?export=view&id=1neWaCabM7UGKq0X7WceeN2SxRVcCQ4nd', 4),
                                                       (28, 'Shoulder Push-Up', 'https://drive.google.com/uc?export=view&id=1vvWEutbDRbaAfEgV7OrlvgJ_Y8_8294_', 4),
                                                       (29, 'Rear Delt Raises', 'https://drive.google.com/uc?export=view&id=1fg6Cf3AYiysoC00dPonwPWzBh46unAVU', 4),
-
                                                       (30, 'Biceps Curl', 'https://drive.google.com/uc?export=view&id=1v_2I0LtNzHt43WDuwnVTGANqGXVeLuWO ', 5),
                                                       (31, 'Scott Bench Curl', 'https://drive.google.com/uc?export=view&id=1zbQInNKY2hWDchYQ2pOFdEB_FxI_f6oQ', 5),
                                                       (32, 'Hammer Curl', 'https://drive.google.com/uc?export=view&id=1i3U7D5nqEO6nbKk_b9YCgXfUt6v9CX-B', 5),
@@ -80,7 +76,6 @@ INSERT INTO exercises (id, name, image , muscle_group_id) VALUES
                                                       (34, 'Skull Crushers', 'https://drive.google.com/uc?export=view&id=19qoMbyR4yoGhPpdFz5miMZ-S1mVScNcF', 5),
                                                       (35, 'Diamond Push-Ups', 'https://drive.google.com/uc?export=view&id=1jfOfKEgu-Hq2-J2__sSw1OJn-vGfY6O2', 5),
                                                       (36, 'Triceps Dips', 'https://drive.google.com/uc?export=view&id=1dyuvXHQNKeUcbczCInZBgmaiFXIjAY5o', 5),
-
                                                       (37, 'Plank', 'https://drive.google.com/uc?export=view&id=1FApWP7ACfBIFbiZvhNwCgSlvobBKhvNp', 6),
                                                       (38, 'Dead Bug', 'https://drive.google.com/uc?export=view&id=1UbuziCPOFKP9DVdKA1WD--TFY7gIZy5B', 6),
                                                       (39, 'Bird Dog', 'https://drive.google.com/uc?export=view&id=1xN2H6KH_XnAmGU0-UX8mk8-Ro0-CiLpR', 6),
@@ -147,17 +142,13 @@ INSERT INTO exercises_variants (id, exercise_id, name) VALUES
                                                            (9, 10, 'Single-Arm Cable Row'),
                                                            (10, 10, 'Wide-Grip Cable Row'),
                                                            (11, 10, 'Close-Grip Cable Row'),
-
                                                            (12, 11, 'Underhand Pull-Ups'),
                                                            (13, 11, 'Neutral-Grip Pull-Ups'),
                                                            (14, 11, 'Weighted Pull-Ups'),
-
                                                            (15, 12, 'Wide-Grip Lat Pulldown'),
                                                            (16, 12, 'Close-Grip Lat Pulldown'),
                                                            (17, 12, 'Single-Arm Lat Pulldown'),
-
                                                            (18, 13, 'Dumbbell Shrugs'),
-
                                                            (19, 14, 'Barbell Squat'),
                                                            (20, 14, 'Dumbbell Squat'),
                                                            (21, 14, 'Sumo Squat'),
@@ -173,7 +164,6 @@ INSERT INTO exercises_variants (id, exercise_id, name) VALUES
                                                            (31, 19, 'Dumbbell Lunges'),
                                                            (32, 22, 'Weighted Box Step-Ups'),
                                                            (33, 22, 'Box Jump'),
-
                                                            (34, 23, 'Dumbbell Shoulder Press'),
                                                            (35, 25, 'Dumbbell Front Raises'),
                                                            (36, 25, 'Low Cable Front Raises'),
@@ -184,7 +174,6 @@ INSERT INTO exercises_variants (id, exercise_id, name) VALUES
                                                            (41, 29, 'Dumbbell Rear Delt Raises'),
                                                            (42, 29, 'Low Cable Rear Delt Raises'),
                                                            (43, 29, 'Machine Rear Delt Raises'),
-
                                                            (44, 30, 'Barbell Biceps Curl'),
                                                            (45, 30, 'Dumbbell Biceps Curl'),
                                                            (46, 30, 'Low Cable Biceps Curl'),
@@ -199,6 +188,54 @@ INSERT INTO exercises_variants (id, exercise_id, name) VALUES
                                                            (55, 34, 'Dumbbell Skull Crusher'),
                                                            (56, 36, 'Parallel Bar Triceps Dips'),
                                                            (57, 36, 'Bench Triceps Dips'),
-
                                                            (58, 37, 'Front Plank'),
                                                            (59, 37, 'Side Plank');
+-- 6. Insert Training goals
+INSERT INTO training_goal (id, name, description) VALUES
+                                                       (1, 'Hypertrophy', 'Objetivo centrado en ganar masa muscular mediante volumen e intensidad progresiva.'),
+                                                       (2, 'Fat Loss', 'Entrenamiento orientado a perder grasa manteniendo la mayor masa muscular posible.'),
+                                                       (3, 'Toning', 'Mejorar definición muscular y composición corporal.'),
+                                                       (4, 'Strength', 'Incrementar la fuerza máxima usando cargas altas y descansos largos.'),
+                                                       (5, 'Muscular Endurance', 'Mejorar la resistencia muscular con altas repeticiones y descansos cortos.'),
+                                                       (6, 'General Fitness', 'Mejorar condición física general y salud.'),
+                                                       (7, 'Specific Muscle Focus', 'Entrenamiento enfocado en desarrollar un grupo muscular concreto.');
+-- 7. Insert Training methods
+INSERT INTO training_method (id, name, description) VALUES
+                                                         (1, 'Progressive Overload', 'Incrementar progresivamente la carga, volumen o dificultad del entrenamiento.'),
+                                                         (2, 'RIR', 'Uso de repeticiones en reserva para controlar la intensidad del esfuerzo.'),
+                                                         (3, 'RPE', 'Escala de percepción del esfuerzo para regular la intensidad.'),
+                                                         (4, 'Superset', 'Realizar dos ejercicios consecutivos con poco o ningún descanso.'),
+                                                         (5, 'Drop Set', 'Reducir el peso tras alcanzar el fallo y continuar la serie.'),
+                                                         (6, 'Rest Pause', 'Pequeñas pausas dentro de una misma serie para extender el esfuerzo.'),
+                                                         (7, 'Myo Reps', 'Mini series cortas tras una serie principal efectiva.'),
+                                                         (8, 'Pyramid Set', 'Aumentar o disminuir progresivamente la carga entre series.'),
+                                                         (9, 'Circuit Training', 'Ejercicios realizados consecutivamente para aumentar intensidad y gasto calórico.'),
+                                                         (10, 'HIIT', 'Entrenamiento interválico de alta intensidad.'),
+                                                         (11, 'Full Body', 'Entrenamiento de cuerpo completo en cada sesión.'),
+                                                         (12, 'Push Pull Legs', 'División de entrenamiento por empuje, tirón y piernas.'),
+                                                         (13, 'Upper Lower', 'División torso y pierna.'),
+                                                         (14, 'Body Part Split', 'División clásica por grupos musculares.'),
+                                                         (15, 'Time Under Tension', 'Control del tiempo de ejecución para aumentar estímulo muscular.'),
+                                                         (16, 'Training to Failure', 'Series llevadas hasta el fallo muscular o muy cerca de él.');
+-- 8. Insert Training methods
+INSERT INTO training_level (id, name) VALUES
+                                           (1, 'Beginner'),
+                                           (2, 'Intermediate'),
+                                           (3, 'Advanced');
+-- 9. Insert Training methods
+INSERT INTO work_split (id, name, description) VALUES
+                                                       (1, 'Full Body', 'Trabajo de todo el cuerpo en cada sesión.'),
+                                                       (2, 'Upper Lower', 'División torso y pierna.'),
+                                                       (3, 'Push Pull Legs', 'División por empuje, tirón y piernas.'),
+                                                       (4, 'Bro Split', 'Un grupo muscular principal por día.'),
+                                                       (5, 'Hybrid', 'Combinación de distintos sistemas de entrenamiento.');
+
+INSERT INTO work_plan
+(id, name, description, days_per_week, duration_weeks, is_active, training_goal_id, training_level_id, work_split_id)
+VALUES
+    (1, 'PPL Hypertrophy Intermediate', 'Rutina Push Pull Legs enfocada en hipertrofia con volumen moderado-alto y sobrecarga progresiva.', 6, 12, 1, 1, 2, 3),
+    (2, 'Full Body Fat Loss Beginner', 'Rutina Full Body para pérdida de grasa y mejora de condición física general.', 3, 8, 1, 2, 1, 1),
+    (3, 'Upper Lower Strength Advanced', 'Programa torso-pierna orientado a fuerza máxima con cargas altas y descansos largos.', 4, 10, 1, 4, 3, 2),
+    (4, 'Bro Split Hypertrophy Advanced', 'División clásica por grupos musculares enfocada en alto volumen de entrenamiento.', 5, 12, 1, 1, 3, 4),
+    (5, 'Full Body General Fitness Beginner', 'Rutina equilibrada para mejorar salud, movilidad, fuerza básica y condición física general.', 3, 6, 1, 6, 1, 1),
+    (6, 'Glute Focus Intermediate', 'Programa específico para desarrollo de glúteos y piernas con énfasis en hipertrofia.', 4, 10, 1, 7, 2, 2);
