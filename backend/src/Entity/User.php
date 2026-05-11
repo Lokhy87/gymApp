@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -41,6 +43,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $location = null;
+
+    /**
+     * @var Collection<int, Workout>
+     */
+    #[ORM\OneToMany(targetEntity: Workout::class, mappedBy: 'user')]
+    private Collection $workouts;
+
+    public function __construct()
+    {
+        $this->workouts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -155,6 +168,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLocation(string $location): static
     {
         $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Workout>
+     */
+    public function getWorkouts(): Collection
+    {
+        return $this->workouts;
+    }
+
+    public function addWorkout(Workout $workout): static
+    {
+        if (!$this->workouts->contains($workout)) {
+            $this->workouts->add($workout);
+            $workout->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkout(Workout $workout): static
+    {
+        if ($this->workouts->removeElement($workout)) {
+            // set the owning side to null (unless already changed)
+            if ($workout->getUser() === $this) {
+                $workout->setUser(null);
+            }
+        }
 
         return $this;
     }

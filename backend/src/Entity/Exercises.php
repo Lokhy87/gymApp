@@ -37,10 +37,17 @@ class Exercises
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    /**
+     * @var Collection<int, Workout>
+     */
+    #[ORM\OneToMany(targetEntity: Workout::class, mappedBy: 'exercise')]
+    private Collection $workouts;
+
     public function __construct()
     {
         $this->exercisesMuscles = new ArrayCollection();
         $this->exercisesVariants = new ArrayCollection();
+        $this->workouts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -137,6 +144,36 @@ public function addExercisesMuscle(ExercisesMuscles $exercisesMuscle): static
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Workout>
+     */
+    public function getWorkouts(): Collection
+    {
+        return $this->workouts;
+    }
+
+    public function addWorkout(Workout $workout): static
+    {
+        if (!$this->workouts->contains($workout)) {
+            $this->workouts->add($workout);
+            $workout->setExercise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkout(Workout $workout): static
+    {
+        if ($this->workouts->removeElement($workout)) {
+            // set the owning side to null (unless already changed)
+            if ($workout->getExercise() === $this) {
+                $workout->setExercise(null);
+            }
+        }
 
         return $this;
     }
