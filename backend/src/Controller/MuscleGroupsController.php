@@ -10,8 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/muscle/groups')]
+#[IsGranted('ROLE_ADMIN')]
 final class MuscleGroupsController extends AbstractController
 {
     #[Route(name: 'app_muscle_groups_index', methods: ['GET'])]
