@@ -1,14 +1,18 @@
 <div class="container">
-<h2 class="text-center pt-5">See your progress</h2>
+<h2 class="text-center p-5">See your progress</h2>
+<div class="progress-card">
                 <form method="POST" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" class="row g-3 align-items-end justify-content-center text-white">
 
                     <div class="col-12 col-md-4">
                         <label class="form-label">Exercises</label>
                         <select formControlName="searchType" class="form-select">
-                            <option selected>Choose...</option>
-                            <option>Rows</option>
-                            <option>Curls</option>
-                            <option>Flies</option>
+                            <option value="" disabled>Choose...</option>
+                            @if (loading) {
+                                <option value="">Loading...</option>
+                            }
+                            @for (exercise of exercises; track exercise.id) {
+                                    <option [value]="exercise.name">{{ exercise.name }}</option>
+                            }    
                         </select>
                     </div>
 
@@ -41,4 +45,5 @@
                 <div class="chart-wrapper m-5">
                     <canvas id=myChart></canvas>
                 </div>
+            </div>
 </div>

@@ -36,3 +36,9 @@
 .fc a {
     text-decoration: none;
 }
+
+.modal-btn {
+    font-weight: 500;
+    color: #01a8bc;
+    background: rgba(46, 46, 46, 0.527);
+}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TrainingMethod index{% endblock %}
+
+{% block body %}
+    <h1>TrainingMethod index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for training_method in training_methods %}
+            <tr>
+                <td>{{ training_method.id }}</td>
+                <td>{{ training_method.name }}</td>
+                <td>{{ training_method.description }}</td>
+                <td>
+                    <a href="{{ path('app_training_method_show', {'id': training_method.id}) }}">show</a>
+                    <a href="{{ path('app_training_method_edit', {'id': training_method.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_training_method_new') }}">Create new</a>
+{% endblock %}

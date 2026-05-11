@@ -13,28 +13,16 @@ class ExercisesVariants
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'exercisesVariants')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Exercises $exercise = null;
-
     #[ORM\Column(length: 255)]
     private ?string $name = null;
+
+    #[ORM\ManyToOne(targetEntity: Exercises::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Exercises $exercise = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getExercise(): ?Exercises
-    {
-        return $this->exercise;
-    }
-
-    public function setExercise(?Exercises $exercise): static
-    {
-        $this->exercise = $exercise;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -45,6 +33,18 @@ class ExercisesVariants
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getExercise(): ?Exercises
+    {
+        return $this->exercise;
+    }
+
+    public function setExercise(?Exercises $exercise): static
+    {
+        $this->exercise = $exercise;
 
         return $this;
     }

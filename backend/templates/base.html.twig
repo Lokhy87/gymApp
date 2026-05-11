@@ -12,6 +12,29 @@
         {% endblock %}
     </head>
     <body>
+    <nav style="display: flex; gap: 30px; padding: 20px; background-color: #f8f9fa;">
+        <a href="{{ path('app_main') }}" style="font-size: 20px; color: blue; text-decoration: none">
+            Start
+        </a>
+        <a href="{{ path('app_muscle_groups_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
+            Muscle Group
+        </a>
+        <a href="{{ path('app_muscles_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
+            Muscles
+        </a>
+        <a href="{{ path('app_exercises_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
+            Exercises
+        </a>
+        <a href="{{ path('app_exercises_muscles_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
+            Exercises Muscles
+        </a>
+        <a href="{{ path('app_exercises_variants_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
+            Exercises Variants
+        </a>
+        <a href="{{ path('app_api') }}" style="font-size: 20px; color: blue; text-decoration: none">
+            Api controler
+        </a>
+    </nav>
         {% block body %}{% endblock %}
     </body>
 </html>

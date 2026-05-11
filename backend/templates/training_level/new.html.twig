@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TrainingLevel{% endblock %}
+
+{% block body %}
+    <h1>Create new TrainingLevel</h1>
+
+    {{ include('training_level/_form.html.twig') }}
+
+    <a href="{{ path('app_training_level_index') }}">back to list</a>
+{% endblock %}

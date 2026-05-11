@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 import { ReactiveFormsModule, FormGroup, FormControl} from '@angular/forms';
+import { ExerciseService } from '../../services/exercises';
 
 @Component({
   selector: 'app-progress',
@@ -10,6 +11,21 @@ import { ReactiveFormsModule, FormGroup, FormControl} from '@angular/forms';
   styleUrl: './progress.css',
 })
 export class Progress {
+
+  exercises: any[] = [];
+
+  constructor(private exerciseService: ExerciseService, private cdr:ChangeDetectorRef) {}
+
+  loading = true;
+
+  ngOnInit() {
+    this.exerciseService.getExercises().subscribe(data=> {
+      this.exercises=data;
+      this.loading = false;
+      this.cdr.detectChanges();
+      console.log(data);
+    })
+  }
   
   reactiveForm = new FormGroup ({
     searchType: new FormControl(''),
@@ -18,70 +34,57 @@ export class Progress {
   
   chart: any;
 
-  onSubmit() {
-    const searchType = (this.reactiveForm.value.searchType ?? '').toLowerCase();
-    const range = (this.reactiveForm.value.range ?? '').toLowerCase();
+onSubmit() {
+  console.log("hello");
+}
 
-    console.log('Exercise:', searchType);
-    console.log('Range:', range);
+ngAfterViewInit() {
+  this.createChart();
+}
 
-    const data = this.getDataBasedOnSelection(searchType, range);
-
-    if (!this.chart) {
-      this.createChart();
-    }
-
-    this.chart.data.labels = data.labels;
-    this.chart.data.datasets[0].data = data.values;
-
-    this.chart.update();
-  }
-
-  ngAfterViewInit() {
-    this.createChart();
-  }
-
-  createChart() {
+createChart() {
   const canvas = document.getElementById('myChart') as HTMLCanvasElement;
 
   this.chart = new Chart(canvas, {
     type: 'line',
     data: {
-      labels: [],
+      labels: ['Jan', 'Feb', 'Mar', 'Apr',
+  'May', 'Jun', 'Jul', 'Aug',
+  'Sep', 'Oct', 'Nov', 'Dec'],
       datasets: [{
-        data: [],
-        borderColor: '#01a8bc'
+        label: 'Bench Press (kg)',
+        data: [60, 62.5, 65, 67.5, 70, 72.5, 75, 77.5, 80, 82.5, 85, 87.5],
+        borderColor: '#00535c',
+        borderWidth: 3,
+        pointBackgroundColor: '#00535c',
+        pointBorderColor: '#00535c',
+        fill: true,
+        backgroundColor: 'rgba(0, 125, 139, 0.48)',
+        tension: 0.3
       }]
+    },
+    options: {
+      scales: {
+        x: {
+          ticks: {
+            color: 'white'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.45)'
+          }
+        },
+        y: {
+          ticks: {
+            color: 'white'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.44)'
+          }
+        }
+      }
     }
   });
 }
 
-  getDataBasedOnSelection(searchType: string | null, range: string | null) {
 
-    if (searchType === 'curls' && range === '6') {
-      return {
-        labels: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
-        values: [20, 22, 25, 27, 30, 32]
-      };
-    }
-
-    if (searchType === 'rows') {
-      return {
-        labels: ['Nov', 'Dec', 'Jan', 'Feb'],
-        values: [40, 42, 45, 47]
-      };
-    }
-
-    if (searchType === 'flies') {
-      return {
-        labels: ['Nov', 'Dec', 'Jan', 'Feb'],
-        values: [10, 12, 13, 15]
-      };
-    }
-
-    return {
-      labels: [],
-      values: []
-    };
-  }
 }

@@ -1,15 +1,17 @@
 <div class="container">
-        <div class="d-flex align-items-center justify-content-center pt-5 g-3">
+        <div class="d-flex align-items-center justify-content-center p-5 g-3">
             <a routerLink="/home" class="btn btn-sm mx-3">&#8592;</a>
-            <h2>{{ group }} exercises</h2>
+            <h2>Exercises</h2>
         </div>
-        <form class="d-flex w-100 justify-content-center">
-            <input class="m-2 p-2 search-bar" type="search" placeholder="Search Exercises" aria-label="Search"/>
-        </form>
-
+       
         <div class="cards d-flex flex-wrap align-items-center justify-content-center">
-            @for (exercise of exercises; track exercise) {
-                <app-card [title]="exercise" [image]="'assets/images/back.jpg'" (cardClick)="openExerciseModal(exercise)"></app-card>
-            }
+        @if(loading) {
+            <div class="text-light">Loading...</div>
+        }
+        @if(!loading) {
+            @for (exercise of exercises; track exercise.id) {
+                <app-card [title]="exercise.name" [image]="exercise.image" (cardClick)="openExerciseModal(exercise)"></app-card>
+            }  
+        }
         </div>
 </div>

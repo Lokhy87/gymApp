@@ -33,8 +33,13 @@ h1 {
 }
 
 .btn {
-    color: #01a8bc;
-    font-size: clamp(10px, 2rem, 40px);
+    color: #005f69;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.45);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 h2 {

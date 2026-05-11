@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Exercises;
+use App\Entity\MuscleGroups;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+
+class ExercisesType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('name')
+            ->add('muscleGroup', EntityType::class, [
+                'class' => MuscleGroups::class,
+                'choice_label' => 'id',
+            ])
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Exercises::class,
+        ]);
+    }
+}
