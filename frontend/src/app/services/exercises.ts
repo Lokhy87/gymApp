@@ -7,7 +7,7 @@ import { ExercisesInterface } from '../shared/interfaces/exercises.interface';
   providedIn: 'root',
 })
 export class ExerciseService {
-   private url = 'http://localhost:8050/api_exercises'
+   private url = 'http://localhost:8050/api/exercises'
 
    constructor(private http: HttpClient) {}
 

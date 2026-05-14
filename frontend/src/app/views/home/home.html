@@ -9,7 +9,7 @@
       @for (group of muscleGroups; track group.id) {
         <app-card
           [title]="group.name"
-          [image]="'assets/images/back.jpg'"
+          [image]="group.image"
           (cardClick)="goToExercises(group.id)"
         ></app-card>
       }

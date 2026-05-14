@@ -7,7 +7,7 @@ import { MuscleGroupInterface } from '../shared/interfaces/muscle-groups.interfa
   providedIn: 'root',
 })
 export class MuscleGroupService {
-  private url = 'http://localhost:8050/api_muscle_groups';
+  private url = 'http://localhost:8050/api/muscle_groups';
 
   constructor(private http: HttpClient) {}
 
