@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 class="text-center p-5">Muscle Groups</h2>
+
+  <div class="cards d-flex flex-wrap align-items-center justify-content-center">
+    @if (loading) {
+      <div class="text-white">Loading...</div>
+    }
+    @if (!loading) {
+      @for (group of muscleGroups; track group.id) {
+        <app-card
+          [title]="group.name"
+          [image]="group.image"
+          (cardClick)="goToExercises(group.id)"
+        ></app-card>
+      }
+    }
+  </div>
+</div>

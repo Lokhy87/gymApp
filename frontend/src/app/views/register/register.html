@@ -1,0 +1,47 @@
+<body>
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <h1 class="auth-title">Create account</h1>
+        <p class="auth-subtitle">Start your fitness journey</p>
+
+        <form>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Choose a username"
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter your email address"
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Create a password"
+            />
+          </div>
+
+          <button type="submit" class="btn-auth">Create account</button>
+        </form>
+
+        <div class="auth-terms">
+          By creating an account, you agree to our
+          <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </div>
+
+        <div class="auth-footer">
+          Already have an account?
+          <a routerLink="/login">Log in</a><br><br>
+          <a routerLink="/">Back</a>
+        </div>
+      </div>
+    </div>
+  </body>

@@ -1,0 +1,61 @@
+<div class="main-content">
+    <div class="profile-card">
+        <div class="card-title text-center mb-4">
+            <h3>Your Profile</h3>
+        </div>
+        @if (!editMode) {
+            <div class="profile-info">
+                <div class="profile-row">
+                    <span class="label">Username</span>
+                    <span class="value">{{user.username}}</span>
+                </div>
+                <div class="profile-row">
+                    <span class="label">Email</span>
+                    <span class="value">{{user.email}}</span>
+                </div>
+                <div class="profile-row">
+                    <span class="label">Password</span>
+                    <span class="value">{{user.password}}</span>
+                </div>
+                <div class="profile-row">
+                    <span class="label">Location</span>
+                    <span class="value">{{user.location}}</span>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary px-3" (click)="editProfile()">Edit</button>
+                <button class="btn btn-danger" (click)="deleteAccount()">Delete Account</button>
+            </div>
+        }
+
+        @if (editMode) {
+            <form action="">
+                <div class="mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" value="{{user.username}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" value="{{user.email}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" value="{{user.password}}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" value="{{user.location}}">
+                </div>
+                <div class="button-group">
+                    <button (click)="editProfile()" class="btn btn-primary">Return</button>
+                    <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+        }
+        
+    </div>
+</div>

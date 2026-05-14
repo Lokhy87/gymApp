@@ -1,0 +1,49 @@
+<div class="container">
+<h2 class="text-center p-5">See your progress</h2>
+<div class="progress-card">
+                <form method="POST" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm" class="row g-3 align-items-end justify-content-center text-white">
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label">Exercises</label>
+                        <select formControlName="searchType" class="form-select">
+                            <option value="" disabled>Choose...</option>
+                            @if (loading) {
+                                <option value="">Loading...</option>
+                            }
+                            @for (exercise of exercises; track exercise.id) {
+                                    <option [value]="exercise.name">{{ exercise.name }}</option>
+                            }    
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label">Time Range</label>
+
+                        <div class="d-flex gap-3">
+                            <div class="form-check">
+                                <input formControlName="range" value="12" class="form-check-input" type="radio" id="r12">
+                                <label class="form-check-label" for="r12">12 mo</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input formControlName="range" value="6" class="form-check-input" type="radio" id="r6" checked>
+                                <label class="form-check-label" for="r6">6 mo</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input formControlName="range" value="3" class="form-check-input" type="radio" id="r3">
+                                <label class="form-check-label" for="r3">3 mo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-2 d-grid">
+                        <button type="submit" class="btn">Apply</button>
+                    </div>
+
+                </form>
+                <div class="chart-wrapper m-5">
+                    <canvas id=myChart></canvas>
+                </div>
+            </div>
+</div>
