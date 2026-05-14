@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ExercisesVariants index{% endblock %}
+
+{% block body %}
+    <h1>ExercisesVariants index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exercises_variant in exercises_variants %}
+            <tr>
+                <td>{{ exercises_variant.id }}</td>
+                <td>{{ exercises_variant.name }}</td>
+                <td>
+                    <a href="{{ path('app_exercises_variants_show', {'id': exercises_variant.id}) }}">show</a>
+                    <a href="{{ path('app_exercises_variants_edit', {'id': exercises_variant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exercises_variants_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MuscleGroups{% endblock %}
+
+{% block body %}
+    <h1>MuscleGroups</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ muscle_group.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ muscle_group.name }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ muscle_group.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_muscle_groups_index') }}">back to list</a>
+
+    <a href="{{ path('app_muscle_groups_edit', {'id': muscle_group.id}) }}">edit</a>
+
+    {{ include('muscle_groups/_delete_form.html.twig') }}
+{% endblock %}

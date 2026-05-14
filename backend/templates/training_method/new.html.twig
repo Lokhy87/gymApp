@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TrainingMethod{% endblock %}
+
+{% block body %}
+    <h1>Create new TrainingMethod</h1>
+
+    {{ include('training_method/_form.html.twig') }}
+
+    <a href="{{ path('app_training_method_index') }}">back to list</a>
+{% endblock %}

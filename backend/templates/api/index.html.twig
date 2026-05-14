@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ApiController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Home Page</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Return</th>
+            <th>URL endpoint</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Access to Muscle Group</td>
+                <td> /api/muscle_groups</td>
+            </tr>
+            <tr>
+                <td>Exercises by muscle group all</td>
+                <td>/api/exercises</td>
+            </tr>
+            <tr>
+                <td>Exercises by muscle group by id</td>
+                <td>/api/exercises?muscle_group_id=X</td>
+            </tr>
+            <tr>
+                <td>Workout</td>
+                <td>/api/workouts</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Calendar Page</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Return</th>
+            <th>URL endpoint</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Exercises done by date</td>
+            <td> /api</td>
+        </tr>
+        <tr>
+            <td>Details of a single exercise</td>
+            <td>/api</td>
+        </tr>
+        <tr>
+            <td>Exercises by muscle group by id</td>
+            <td>/api</td>
+        </tr>
+        <tr>
+            <td>Update a workout</td>
+            <td>/api</td>
+        </tr>
+        <tr>
+            <td>Delete a Workout</td>
+            <td>/api</td>
+        </tr>
+        </tbody>
+    </table>
+    <h1>Progress Page</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Return</th>
+            <th>URL endpoint</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Filter by exercise and time amount</td>
+            <td> /api</td>
+        </tr>
+        </tbody>
+    </table>
+    <h1>Perfil Page</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Return</th>
+            <th>URL endpoint</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Profile</td>
+            <td>/api</td>
+        </tr>
+        <tr>
+            <td>Edit Profile</td>
+            <td>/api</td>
+        </tr>
+        <tr>
+            <td>Delete Profile</td>
+            <td>/api</td>
+        </tr>
+        <tr>
+            <td>Workout</td>
+            <td>/api</td>
+        </tr>
+        </tbody>
+    </table>
+    <h1>Home Page</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Return</th>
+            <th>URL endpoint</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Login</td>
+            <td>/api</td>
+        </tr>
+        </tbody>
+    </table>
+    <h1>Register Page</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Return</th>
+            <th>URL endpoint</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Register</td>
+            <td>/api</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

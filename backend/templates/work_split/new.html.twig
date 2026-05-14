@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New WorkSplit{% endblock %}
+
+{% block body %}
+    <h1>Create new WorkSplit</h1>
+
+    {{ include('work_split/_form.html.twig') }}
+
+    <a href="{{ path('app_work_split_index') }}">back to list</a>
+{% endblock %}

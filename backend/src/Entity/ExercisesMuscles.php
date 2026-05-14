@@ -13,28 +13,20 @@ class ExercisesMuscles
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(inversedBy: 'exercisesMuscles')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Exercises $muscle = null;
-
     #[ORM\Column(length: 255)]
     private ?string $role = null;
+
+    #[ORM\ManyToOne(targetEntity: Exercises::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Exercises $exercise = null;
+
+    #[ORM\ManyToOne(targetEntity: Muscles::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Muscles $muscle = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getMuscle(): ?Exercises
-    {
-        return $this->muscle;
-    }
-
-    public function setMuscle(?Exercises $muscle): static
-    {
-        $this->muscle = $muscle;
-
-        return $this;
     }
 
     public function getRole(): ?string
@@ -45,6 +37,30 @@ class ExercisesMuscles
     public function setRole(string $role): static
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getExercise(): ?Exercises
+    {
+        return $this->exercise;
+    }
+
+    public function setExercise(?Exercises $exercise): static
+    {
+        $this->exercise = $exercise;
+
+        return $this;
+    }
+
+    public function getMuscle(): ?Muscles
+    {
+        return $this->muscle;
+    }
+
+    public function setMuscle(?Muscles $muscle): static
+    {
+        $this->muscle = $muscle;
 
         return $this;
     }

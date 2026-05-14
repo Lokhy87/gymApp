@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ExercisesMuscles{% endblock %}
+
+{% block body %}
+    <h1>Edit ExercisesMuscles</h1>
+
+    {{ include('exercises_muscles/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_exercises_muscles_index') }}">back to list</a>
+
+    {{ include('exercises_muscles/_delete_form.html.twig') }}
+{% endblock %}

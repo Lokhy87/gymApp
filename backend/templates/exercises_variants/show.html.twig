@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ExercisesVariants{% endblock %}
+
+{% block body %}
+    <h1>ExercisesVariants</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ exercises_variant.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ exercises_variant.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exercises_variants_index') }}">back to list</a>
+
+    <a href="{{ path('app_exercises_variants_edit', {'id': exercises_variant.id}) }}">edit</a>
+
+    {{ include('exercises_variants/_delete_form.html.twig') }}
+{% endblock %}

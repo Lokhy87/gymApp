@@ -25,7 +25,7 @@ class Exercises
     /**
      * @var Collection<int, ExercisesMuscles>
      */
-    #[ORM\OneToMany(targetEntity: ExercisesMuscles::class, mappedBy: 'muscle')]
+    #[ORM\OneToMany(targetEntity: ExercisesMuscles::class, mappedBy: 'exercise')]
     private Collection $exercisesMuscles;
 
     /**
@@ -34,10 +34,20 @@ class Exercises
     #[ORM\OneToMany(targetEntity: ExercisesVariants::class, mappedBy: 'exercise')]
     private Collection $exercisesVariants;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    /**
+     * @var Collection<int, Workout>
+     */
+    #[ORM\OneToMany(targetEntity: Workout::class, mappedBy: 'exercise')]
+    private Collection $workouts;
+
     public function __construct()
     {
         $this->exercisesMuscles = new ArrayCollection();
         $this->exercisesVariants = new ArrayCollection();
+        $this->workouts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,25 +87,22 @@ class Exercises
         return $this->exercisesMuscles;
     }
 
-    public function addExercisesMuscle(ExercisesMuscles $exercisesMuscle): static
-    {
-        if (!$this->exercisesMuscles->contains($exercisesMuscle)) {
-            $this->exercisesMuscles->add($exercisesMuscle);
-            $exercisesMuscle->setMuscle($this);
-        }
-
-        return $this;
+public function addExercisesMuscle(ExercisesMuscles $exercisesMuscle): static
+{
+    if (!$this->exercisesMuscles->contains($exercisesMuscle)) {
+        $this->exercisesMuscles->add($exercisesMuscle);
+        $exercisesMuscle->setExercise($this); // <-- CAMBIADO A setExercise
     }
+    return $this;
+}
 
     public function removeExercisesMuscle(ExercisesMuscles $exercisesMuscle): static
     {
         if ($this->exercisesMuscles->removeElement($exercisesMuscle)) {
-            // set the owning side to null (unless already changed)
-            if ($exercisesMuscle->getMuscle() === $this) {
-                $exercisesMuscle->setMuscle(null);
+            if ($exercisesMuscle->getExercise() === $this) { // <-- CAMBIADO A getExercise
+                $exercisesMuscle->setExercise(null); // <-- CAMBIADO A setExercise
             }
         }
-
         return $this;
     }
 
@@ -123,6 +130,48 @@ class Exercises
             // set the owning side to null (unless already changed)
             if ($exercisesVariant->getExercise() === $this) {
                 $exercisesVariant->setExercise(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Workout>
+     */
+    public function getWorkouts(): Collection
+    {
+        return $this->workouts;
+    }
+
+    public function addWorkout(Workout $workout): static
+    {
+        if (!$this->workouts->contains($workout)) {
+            $this->workouts->add($workout);
+            $workout->setExercise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkout(Workout $workout): static
+    {
+        if ($this->workouts->removeElement($workout)) {
+            // set the owning side to null (unless already changed)
+            if ($workout->getExercise() === $this) {
+                $workout->setExercise(null);
             }
         }
 

@@ -1,0 +1,94 @@
+<?php
+
+namespace App\Entity;
+
+use App\Repository\WorkSplitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+
+#[ORM\Entity(repositoryClass: WorkSplitRepository::class)]
+class WorkSplit
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $name = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description = null;
+
+    /**
+     * @var Collection<int, WorkPlan>
+     */
+    #[ORM\OneToMany(targetEntity: WorkPlan::class, mappedBy: 'workSplit')]
+    private Collection $workPlans;
+
+    public function __construct()
+    {
+        $this->workPlans = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, WorkPlan>
+     */
+    public function getWorkPlans(): Collection
+    {
+        return $this->workPlans;
+    }
+
+    public function addWorkPlan(WorkPlan $workPlan): static
+    {
+        if (!$this->workPlans->contains($workPlan)) {
+            $this->workPlans->add($workPlan);
+            $workPlan->setWorkSplit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkPlan(WorkPlan $workPlan): static
+    {
+        if ($this->workPlans->removeElement($workPlan)) {
+            // set the owning side to null (unless already changed)
+            if ($workPlan->getWorkSplit() === $this) {
+                $workPlan->setWorkSplit(null);
+            }
+        }
+
+        return $this;
+    }
+}
