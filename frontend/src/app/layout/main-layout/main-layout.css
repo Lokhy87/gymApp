@@ -1,20 +1,17 @@
 .main-content {
-    margin-left: clamp(300px, 20vw, 450px); /*This has to match the width of the sidebar*/
+    margin-left: clamp(300px, 20vw, 450px);
     padding-bottom: 50px;
     min-height: 100vh;
-    height: 100%;
     background:
-    linear-gradient(rgba(1,168,188,0.75), rgba(1,168,188,0.75)),
-    url("/assets/images/bg-gym.jpg") center / cover no-repeat;
+        linear-gradient(rgba(1,168,188,0.75), rgba(1,168,188,0.75)),
+        url("/assets/images/bg-gym.jpg") center / cover no-repeat fixed;
+    background-attachment: scroll; /* fixes iOS background issues */
 }
-
 
 @media (max-width: 991px) {
     .main-content {
-        margin: auto auto auto auto;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+        margin: 0;
+        padding-top: 50px; 
+        display: block;
     }
 }

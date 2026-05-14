@@ -64,6 +64,7 @@ createChart() {
       }]
     },
     options: {
+      maintainAspectRatio: false,
       scales: {
         x: {
           ticks: {

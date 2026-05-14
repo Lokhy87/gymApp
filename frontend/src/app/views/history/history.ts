@@ -1,3 +1,5 @@
+//https://fullcalendar.io/docs/angular//
+//https://fullcalendar.io/docs/handleWindowResize//
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -17,10 +19,21 @@ export class History {
 
   calendarOptions: any = {
     plugins: [dayGridPlugin, interactionPlugin, listPlugin],
-    initialView: window.innerWidth < 768 ? 'listWeek' : 'dayGridMonth',
+    initialView: window.innerWidth < 1100 ? 'listWeek' : 'dayGridMonth',
+    handleWindowResize: true,
+    windowResizeDelay: 100,
+    windowResize: (view: any) => {
+    const newView = window.innerWidth < 1100 ? 'listWeek' : 'dayGridMonth';
+    if (view.view.type !== newView) {
+      view.view.calendar.changeView(newView);
+    }
+    },
     dateClick: (info: any) => {
       console.log(info.dateStr);
       this.onDateClick(info.dateStr);
+    },
+    eventClick: (info: any) => {
+      this.onDateClick(info.event.startStr.split('T')[0]);
     },
 
     events: [
