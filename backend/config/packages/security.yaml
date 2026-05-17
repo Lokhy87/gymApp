@@ -37,12 +37,6 @@ security:
                 path: app_logout
 
     access_control:
-        # 1. El punto de entrada para obtener el token DEBE ser público
         - { path: ^/api/login_check, roles: PUBLIC_ACCESS }
-
-        # 2. CUALQUIER otra ruta que empiece por /api requiere login total
-        # Al quitar las reglas de PUBLIC_ACCESS de arriba, estas quedan protegidas
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-
-        # 3. Reglas para el panel de administración (si usas EasyAdmin o similar)
         - { path: ^/admin, roles: ROLE_ADMIN }

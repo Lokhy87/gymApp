@@ -19,8 +19,8 @@
                 <td>{{ training_level.id }}</td>
                 <td>{{ training_level.name }}</td>
                 <td>
-                    <a href="{{ path('app_training_level_show', {'id': training_level.id}) }}">show</a>
-                    <a href="{{ path('app_training_level_edit', {'id': training_level.id}) }}">edit</a>
+                    <a href="{{ path('app_training_level_show', {'id': training_level.id}) }}" class="btn">show</a>
+                    <a href="{{ path('app_training_level_edit', {'id': training_level.id}) }}" class="btn">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_training_level_new') }}">Create new</a>
+    <a href="{{ path('app_training_level_new') }}" class="btn">Create new</a>
 {% endblock %}

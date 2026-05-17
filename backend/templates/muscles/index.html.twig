@@ -21,8 +21,8 @@
                 <td>{{ muscle.name }}</td>
                 <td>{{ muscle.image }}</td>
                 <td>
-                    <a href="{{ path('app_muscles_show', {'id': muscle.id}) }}">show</a>
-                    <a href="{{ path('app_muscles_edit', {'id': muscle.id}) }}">edit</a>
+                    <a href="{{ path('app_muscles_show', {'id': muscle.id}) }}" class="btn">show</a>
+                    <a href="{{ path('app_muscles_edit', {'id': muscle.id}) }}" class="btn">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_muscles_new') }}">Create new</a>
+    <a href="{{ path('app_muscles_new') }}" class="btn">Create new</a>
 {% endblock %}

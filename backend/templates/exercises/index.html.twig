@@ -19,8 +19,8 @@
                 <td>{{ exercise.id }}</td>
                 <td>{{ exercise.name }}</td>
                 <td>
-                    <a href="{{ path('app_exercises_show', {'id': exercise.id}) }}">show</a>
-                    <a href="{{ path('app_exercises_edit', {'id': exercise.id}) }}">edit</a>
+                    <a href="{{ path('app_exercises_show', {'id': exercise.id}) }}" class="btn">show</a>
+                    <a href="{{ path('app_exercises_edit', {'id': exercise.id}) }}" class="btn">edit</a>
                 </td>
             </tr>
         {% else %}

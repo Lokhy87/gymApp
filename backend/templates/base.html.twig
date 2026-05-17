@@ -1,44 +1,83 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}GymFlow Admin{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-    {% if is_granted('ROLE_USER') %}
-    <nav style="display: flex; gap: 30px; padding: 20px; background-color: #f8f9fa;">
-        <a href="{{ path('app_main') }}" style="font-size: 20px; color: blue; text-decoration: none">
-            Start
-        </a>
-        <a href="{{ path('api_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
-            Api (ENDPOINTS)
-        </a>
-        {% endif %}
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_muscle_groups_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
-            Muscle Group
-        </a>
-        <a href="{{ path('app_muscles_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
-            Muscles
-        </a>
-        <a href="{{ path('app_exercises_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
-            Exercises
-        </a>
-        <a href="{{ path('app_exercises_muscles_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
-            Exercises Muscles
-        </a>
-        <a href="{{ path('app_exercises_variants_index') }}" style="font-size: 20px; color: blue; text-decoration: none">
-            Exercises Variants
-        </a>
-    </nav>
-    {% endif %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Contrail+One&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg px-4" style="background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1);">
+    <div class="container-fluid">
+        <a class="navbar-brand contrail-one-regular" href="#" style="color: #01a8bc; font-size: 28px;">GymFlow API</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                {% if is_granted('ROLE_USER') %}
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_main') }}">Start</a>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('admin_index') }}">Manage Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('admin_endpoints') }}">Api (ENDPOINTS)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_muscle_groups_index') }}">Muscle Groups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_muscles_index') }}">Muscles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_exercises_index') }}">Exercises</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_exercises_muscles_index') }}">Ex. Muscles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_training_goal_index') }}">Train. Goal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_training_level_index') }}">Train. Level</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_training_method_index') }}">Train. Method</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{{ path('app_exercises_variants_index') }}">Ex. Variants</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="progress-card">
         {% block body %}{% endblock %}
-    </body>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

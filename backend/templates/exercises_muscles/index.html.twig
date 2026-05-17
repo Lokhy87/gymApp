@@ -19,8 +19,8 @@
                 <td>{{ exercises_muscle.id }}</td>
                 <td>{{ exercises_muscle.role }}</td>
                 <td>
-                    <a href="{{ path('app_exercises_muscles_show', {'id': exercises_muscle.id}) }}">show</a>
-                    <a href="{{ path('app_exercises_muscles_edit', {'id': exercises_muscle.id}) }}">edit</a>
+                    <a href="{{ path('app_exercises_muscles_show', {'id': exercises_muscle.id}) }}" class="btn">show</a>
+                    <a href="{{ path('app_exercises_muscles_edit', {'id': exercises_muscle.id}) }}" class="btn">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_exercises_muscles_new') }}">Create new</a>
+    <a href="{{ path('app_exercises_muscles_new') }}" class="btn">Create new</a>
 {% endblock %}

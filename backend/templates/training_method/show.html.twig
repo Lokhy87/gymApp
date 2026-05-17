@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_training_method_index') }}">back to list</a>
+    <a href="{{ path('app_training_method_index') }}" class="btn">back to list</a>
 
-    <a href="{{ path('app_training_method_edit', {'id': training_method.id}) }}">edit</a>
+    <a href="{{ path('app_training_method_edit', {'id': training_method.id}) }}" class="btn">edit</a>
 
     {{ include('training_method/_delete_form.html.twig') }}
 {% endblock %}
