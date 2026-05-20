@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; // 👈 Quitamos HttpHeaders, ya no se usan aquí
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserProfile } from '../shared/interfaces/user.interface'; // 👈 Ajusta la ruta a tu archivo
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8050/api';
+  private baseUrl = environment.apiUrl;
 
   private userNameSubject = new BehaviorSubject<string>('');
   userName$ = this.userNameSubject.asObservable();

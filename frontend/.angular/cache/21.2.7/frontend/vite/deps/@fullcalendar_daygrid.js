@@ -1,3 +1,4 @@
+import "./chunk-T7UM46HU.js";
 import {
   BaseComponent,
   BgEvent,
@@ -48,7 +49,7 @@ import {
   setRef,
   sortEventSegs,
   y
-} from "./chunk-NNUX2YEZ.js";
+} from "./chunk-VMNODTIX.js";
 import "./chunk-GOMI4DH3.js";
 
 // node_modules/@fullcalendar/daygrid/internal.js

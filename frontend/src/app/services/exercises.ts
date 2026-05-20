@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { ExercisesInterface } from '../shared/interfaces/exercises.interface';
 
@@ -7,11 +8,12 @@ import { ExercisesInterface } from '../shared/interfaces/exercises.interface';
   providedIn: 'root',
 })
 export class ExerciseService {
-   private url = 'http://localhost:8050/api/exercises'
 
-   constructor(private http: HttpClient) {}
+  private url = `${environment.apiUrl}/exercises`;
 
-   getExercises() {
-    return this.http.get<any[]>(this.url);
-   }
+  constructor(private http: HttpClient) {}
+
+  getExercises(): Observable<ExercisesInterface[]> {
+    return this.http.get<ExercisesInterface[]>(this.url);
+  }
 }

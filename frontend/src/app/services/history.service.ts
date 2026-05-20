@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 import {
   HttpClient
@@ -31,8 +32,7 @@ export interface UpdateWorkoutRequest {
 
 export class HistoryService {
 
-  private apiUrl =
-    'http://localhost:8050/api';
+  private apiUrl = environment.apiUrl;
 
   constructor(
     private http:

@@ -53,7 +53,7 @@ import {
   startOfDay,
   triggerDateSelect,
   whenTransitionDone
-} from "./chunk-NNUX2YEZ.js";
+} from "./chunk-VMNODTIX.js";
 import "./chunk-GOMI4DH3.js";
 
 // node_modules/@fullcalendar/interaction/index.js
