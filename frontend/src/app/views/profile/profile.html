@@ -1,61 +1,85 @@
-<div class="main-content">
-    <div class="profile-card">
-        <div class="card-title text-center mb-4">
-            <h3>Your Profile</h3>
+<div class="profile-container">
+
+    <h2 class="title">Your Profile</h2>
+
+    @if (loading) {
+    <div class="loading">Loading...</div>
+    }
+
+    @if (!loading) {
+
+    @if (!editMode) {
+    <div class="profile-view">
+
+        <!-- Campo Nombre Añadido -->
+        <div class="row">
+            <span class="label">Name:</span>
+            <span class="value">{{ user.name }}</span>
         </div>
-        @if (!editMode) {
-            <div class="profile-info">
-                <div class="profile-row">
-                    <span class="label">Username</span>
-                    <span class="value">{{user.username}}</span>
-                </div>
-                <div class="profile-row">
-                    <span class="label">Email</span>
-                    <span class="value">{{user.email}}</span>
-                </div>
-                <div class="profile-row">
-                    <span class="label">Password</span>
-                    <span class="value">{{user.password}}</span>
-                </div>
-                <div class="profile-row">
-                    <span class="label">Location</span>
-                    <span class="value">{{user.location}}</span>
-                </div>
-            </div>
 
-            <div class="button-group">
-                <button class="btn btn-primary px-3" (click)="editProfile()">Edit</button>
-                <button class="btn btn-danger" (click)="deleteAccount()">Delete Account</button>
-            </div>
-        }
+        <div class="row">
+            <span class="label">Username:</span>
+            <span class="value">{{ user.username }}</span>
+        </div>
 
-        @if (editMode) {
-            <form action="">
-                <div class="mb-3">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" value="{{user.username}}">
-                </div>
+        <div class="row">
+            <span class="label">Email:</span>
+            <span class="value">{{ user.email }}</span>
+        </div>
 
-                <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="text" class="form-control" value="{{user.email}}">
-                </div>
+        <div class="row">
+            <span class="label">Location:</span>
+            <span class="value">{{ user.location }}</span>
+        </div>
 
-                <div class="mb-3">
-                    <label for="password">Password</label>
-                    <input type="text" class="form-control" value="{{user.password}}">
-                </div>
+        <div class="actions">
+            <button class="btn" (click)="editProfile()">Edit</button>
+            <button class="btn danger" (click)="deleteAccount()">Delete Account</button>
+        </div>
 
-                <div class="mb-3">
-                    <label for="location">Location</label>
-                    <input type="text" class="form-control" value="{{user.location}}">
-                </div>
-                <div class="button-group">
-                    <button (click)="editProfile()" class="btn btn-primary">Return</button>
-                    <input type="submit" class="btn btn-primary">
-                </div>
-            </form>
-        }
-        
     </div>
+    }
+
+    @if (editMode) {
+    <form class="profile-edit">
+
+        <!-- Input de Nombre Añadido para edición -->
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="user.name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" [(ngModel)]="user.username" name="username">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="user.email" name="email">
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" [(ngModel)]="user.location" name="location">
+        </div>
+
+        <div class="actions">
+            <button class="btn" type="button" (click)="saveProfile()" [disabled]="saving">
+
+                @if (!saving) {
+                Save
+                }
+
+                @if (saving) {
+                Saving...
+                }
+            </button> <button class="btn secondary" type="button" (click)="editProfile()">Cancel</button>
+        </div>
+
+    </form>
+    }
+
+    }
+
 </div>

@@ -6,7 +6,7 @@ import { MuscleGroupService } from '../../services/muscle-groups';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, Card], templateUrl: './home.html',
+  imports: [Card], templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home {

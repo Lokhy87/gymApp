@@ -1,46 +1,46 @@
+<div class="sidebar d-flex flex-column">
 
-<button class="btn d-lg-none position-fixed top-0 start-0 m-2 z-3"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#sidebar">
-    ☰
-</button>
+  <div class="sidebar-header text-center">
+      <h1 class="logo-text">GymFlow</h1>
+  </div>
 
-<div id="sidebar" class="offcanvas-lg offcanvas-start sidebar d-flex flex-column">
-
-    <div class="sidebar-header text-center">
-        <h1 class="logo-text">GymFlow</h1>
+<div class="user-box">
+        <span class="user-greeting">Welcome</span>
+        <!-- Usamos el pipe async con el nuevo Observable -->
+        <span class="user-name">{{ userName$ | async }}</span>
     </div>
 
-    <ul class="nav flex-column sidebar-nav">
-        <li class="nav-item">
-            <a routerLink="/home" routerLinkActive="active" class="nav-link">
-                <span class="label">Home</span>
-            </a>
-        </li>
+  <ul class="nav flex-column sidebar-nav">
 
-        <li class="nav-item">
-            <a routerLink="/history" routerLinkActive="active" class="nav-link">
-                <span class="label">History</span>
-            </a>
-        </li>
+      <li class="nav-item">
+          <a routerLink="/home" routerLinkActive="active" class="nav-link">
+              <span class="label">Home</span>
+          </a>
+      </li>
 
-        <li class="nav-item">
-            <a routerLink="/progress" routerLinkActive="active" class="nav-link">
-                <span class="label">Progress</span>
-            </a>
-        </li>
+      <li class="nav-item">
+          <a routerLink="/history" routerLinkActive="active" class="nav-link">
+              <span class="label">History</span>
+          </a>
+      </li>
 
-        <li class="nav-item">
-            <a routerLink="/profile" routerLinkActive="active" class="nav-link">
-                <span class="label">Profile</span>
-            </a>
-        </li>
-    </ul>
+      <li class="nav-item">
+          <a routerLink="/progress" routerLinkActive="active" class="nav-link">
+              <span class="label">Progress</span>
+          </a>
+      </li>
 
-    <div class="sidebar-footer">
-        <a routerLink="/" class="nav-link logout">
-            <span class="label">Logout</span>
-        </a>
-    </div>
+      <li class="nav-item">
+          <a routerLink="/profile" routerLinkActive="active" class="nav-link">
+              <span class="label">Profile</span>
+          </a>
+      </li>
+  </ul>
+
+  <div class="sidebar-footer">
+      <a routerLink="/" class="nav-link logout">
+          <span class="label">Logout</span>
+      </a>
+  </div>
 
 </div>
