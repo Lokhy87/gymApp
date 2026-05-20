@@ -1,74 +1,149 @@
-@media (min-width: 992px) {
-    #sidebar {
-        position: fixed !important;
-        top: 0;
-        left: 0;
-        height: 100dvh;
-        width: clamp(300px, 20vw, 450px);
-        background-color: rgb(36, 36, 36) !important;
-        display: flex !important;
-        overflow-y: auto;
-    }
+/* =========================
+   OVERLAY DEL COMPONENTE (HOST)
+========================= */
 
+/* El componente ocupa su espacio normal en escritorio */
+:host {
+  display: block;
+  width: clamp(280px, 17vw, 340px);
+  flex-shrink: 0;
 }
 
-@media (max-width: 991.98) {
-    #sidebar {
-        background-color: rgb(36, 36, 36) !important;
-        height: 100dvh;
-        max-height: 100dvh;
-        overflow-y: auto !important;
-        width: clamp(260px, 75vw, 430px) !important;
-    }
+/* MODO MÓVIL → el componente entero se convierte en overlay */
+@media (max-width: 991px) {
+  :host {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100dvh;
+    width: clamp(260px, 82vw, 420px);
+
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+
+    z-index: 9999;
+  }
+
+  :host(.open) {
+    transform: translateX(0);
+  }
 }
 
-body {
-    background-color: rgb(27, 27, 27);
+/* =========================
+   CONTENIDO INTERNO (GLASS)
+========================= */
+
+.sidebar {
+  height: 100%;
+  width: 100%;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.45)
+  );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-right: 1px solid rgba(255,255,255,0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
 }
 
-h1 {
-    color: #01a8bc;
-    font-family: 'Contrail One';
-    font-size: clamp(12px, 4rem, 75px);
-}
-
-.btn {
-    color: #005f69;
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.45);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(255,255,255,0.4);
-}
-
-h2 {
-    color: whitesmoke;
-    font-size: clamp(10px, 2.5rem, 50px)
-}
-
-.nav-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: clamp(14px, 2.2vh, 22px);
-    color: #01a8bc;
-    text-decoration: none;
-}
-
-.nav-link:hover {
-    text-decoration: underline;
-}
+/* =========================
+   LAYOUT SECTIONS
+========================= */
 
 .sidebar-header {
-    padding: clamp(10px, 3vh, 40px);
+  padding: 2rem 1.75rem 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .sidebar-nav {
-    flex-grow: 1;
-    padding: clamp(10px, 3vh, 40px);
+  flex: 1;
+  padding: 1.25rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .sidebar-footer {
-    padding: clamp(10px, 3vh, 30px);
+  padding: 1.5rem 1.75rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* =========================
+   NAV ITEMS
+========================= */
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+
+  padding: 0.75rem 0.9rem;
+  margin: 0 0.5rem;
+
+  border-radius: var(--radius-sm);
+
+  color: var(--text-light);
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  transition: all 0.18s ease;
+}
+
+.nav-link:hover {
+  background: rgba(1, 168, 188, 0.10);
+  color: #ffffff;
+  transform: translateX(6px);
+}
+
+.nav-link.active {
+  background: rgba(1, 168, 188, 0.18);
+  color: var(--primary);
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+/* =========================
+   RESPONSIVE AJUSTES INTERNOS
+========================= */
+
+@media (max-width: 991px) {
+  .sidebar-header {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .sidebar-nav {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.user-box {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.user-greeting {
+  display: block;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  color: var(--text-light);
+}
+
+.user-name {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.3px;
 }

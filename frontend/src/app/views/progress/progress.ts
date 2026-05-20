@@ -1,7 +1,24 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  AfterViewInit
+} from '@angular/core';
+
+import {
+  ReactiveFormsModule,
+  FormGroup,
+  FormControl
+} from '@angular/forms';
+
 import { Chart } from 'chart.js/auto';
-import { ReactiveFormsModule, FormGroup, FormControl} from '@angular/forms';
-import { ExerciseService } from '../../services/exercises';
+
+import { ExerciseService }
+from '../../services/exercises';
+
+import {
+  ProgressService
+} from '../../services/progress.service';
 
 @Component({
   selector: 'app-progress',
@@ -10,81 +27,178 @@ import { ExerciseService } from '../../services/exercises';
   templateUrl: './progress.html',
   styleUrl: './progress.css',
 })
-export class Progress {
+
+export class Progress
+implements OnInit, AfterViewInit {
 
   exercises: any[] = [];
 
-  constructor(private exerciseService: ExerciseService, private cdr:ChangeDetectorRef) {}
-
   loading = true;
 
+  chart: Chart | null = null;
+
+  reactiveForm =
+    new FormGroup({
+
+      searchType:
+        new FormControl(''),
+
+      range:
+        new FormControl('6')
+    });
+
+  constructor(
+    private exerciseService:
+      ExerciseService,
+
+    private progressService:
+      ProgressService,
+
+    private cdr:
+      ChangeDetectorRef
+  ) {}
+
   ngOnInit() {
-    this.exerciseService.getExercises().subscribe(data=> {
-      this.exercises=data;
-      this.loading = false;
-      this.cdr.detectChanges();
-      console.log(data);
-    })
+
+    this.exerciseService
+      .getExercises()
+      .subscribe(data => {
+
+        this.exercises = data;
+
+        this.loading = false;
+
+        this.cdr.detectChanges();
+      });
   }
-  
-  reactiveForm = new FormGroup ({
-    searchType: new FormControl(''),
-    range: new FormControl(''),
-  })
-  
-  chart: any;
 
-onSubmit() {
-  console.log("hello");
-}
+  ngAfterViewInit() {
+    this.createChart([], []);
+  }
 
-ngAfterViewInit() {
-  this.createChart();
-}
+  onSubmit() {
 
-createChart() {
-  const canvas = document.getElementById('myChart') as HTMLCanvasElement;
+    const exercise =
+      this.reactiveForm
+        .value.searchType;
 
-  this.chart = new Chart(canvas, {
-    type: 'line',
-    data: {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr',
-  'May', 'Jun', 'Jul', 'Aug',
-  'Sep', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: 'Bench Press (kg)',
-        data: [60, 62.5, 65, 67.5, 70, 72.5, 75, 77.5, 80, 82.5, 85, 87.5],
-        borderColor: '#00535c',
-        borderWidth: 3,
-        pointBackgroundColor: '#00535c',
-        pointBorderColor: '#00535c',
-        fill: true,
-        backgroundColor: 'rgba(0, 125, 139, 0.48)',
-        tension: 0.3
-      }]
-    },
-    options: {
-      scales: {
-        x: {
-          ticks: {
-            color: 'white'
-          },
-          grid: {
-            color: 'rgba(255, 255, 255, 0.45)'
-          }
+    const months =
+      this.reactiveForm
+        .value.range;
+
+    if (!exercise || !months) {
+      return;
+    }
+
+    this.progressService
+      .getProgress(
+        exercise,
+        months
+      )
+      .subscribe({
+
+        next: (data) => {
+
+          const labels =
+            data.map(d =>
+              d.date
+            );
+
+          const weights =
+            data.map(d =>
+              d.weight
+            );
+
+          this.createChart(
+            labels,
+            weights
+          );
         },
-        y: {
-          ticks: {
-            color: 'white'
-          },
-          grid: {
-            color: 'rgba(255, 255, 255, 0.44)'
+
+        error: err =>
+          console.error(
+            err
+          )
+      });
+  }
+
+  createChart(
+    labels: string[],
+    data: number[]
+  ) {
+
+    if (this.chart) {
+      this.chart.destroy();
+    }
+
+    const canvas =
+      document.getElementById(
+        'myChart'
+      ) as HTMLCanvasElement;
+
+    this.chart =
+      new Chart(canvas, {
+
+        type: 'line',
+
+        data: {
+          labels,
+
+          datasets: [{
+            label:
+              'Progress (kg)',
+
+            data,
+
+            borderColor:
+              '#00535c',
+
+            borderWidth: 3,
+
+            pointBackgroundColor:
+              '#00535c',
+
+            fill: true,
+
+            backgroundColor:
+              'rgba(0,125,139,0.48)',
+
+            tension: 0.3
+          }]
+        },
+
+        options: {
+
+          maintainAspectRatio:
+            false,
+
+          scales: {
+
+            x: {
+              ticks: {
+                color:
+                  'white'
+              },
+
+              grid: {
+                color:
+                  'rgba(255,255,255,.45)'
+              }
+            },
+
+            y: {
+              ticks: {
+                color:
+                  'white'
+              },
+
+              grid: {
+                color:
+                  'rgba(255,255,255,.45)'
+              }
+            }
           }
         }
-      }
-    }
-  });
-}
-
-
+      });
+  }
 }

@@ -1,19 +1,32 @@
-import { HttpInterceptorFn } from '@angular/common/http';
+import {
+  HttpInterceptorFn
+} from '@angular/common/http';
 
-export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  // Intentamos sacar el token del localStorage
-  const token = localStorage.getItem('token');
+export const authInterceptor:
+HttpInterceptorFn = (
+  req,
+  next
+) => {
 
-  // Si existe, clonamos la petición y le añadimos el Header Authorization
-  if (token) {
-    const authReq = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    return next(authReq);
+  const token =
+    localStorage
+      .getItem('token')
+      ?.trim();
+
+  // Sin token
+  if (!token) {
+    return next(req);
   }
 
-  // Si no hay token, la petición sigue tal cual
-  return next(req);
+  // Clonar request
+  const authReq =
+    req.clone({
+
+      setHeaders: {
+        Authorization:
+          `Bearer ${token}`
+      }
+    });
+
+  return next(authReq);
 };

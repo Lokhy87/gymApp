@@ -1,17 +1,109 @@
 <div class="container">
-        <div class="d-flex align-items-center justify-content-center p-5 g-3">
-            <a routerLink="/home" class="btn btn-sm mx-3">&#8592;</a>
-            <h2>Exercises</h2>
-        </div>
-       
-        <div class="cards d-flex flex-wrap align-items-center justify-content-center">
-        @if(loading) {
-            <div class="text-light">Loading...</div>
-        }
-        @if(!loading) {
-            @for (exercise of exercises; track exercise.id) {
-                <app-card [title]="exercise.name" [image]="exercise.image" (cardClick)="openExerciseModal(exercise)"></app-card>
-            }  
-        }
-        </div>
+  <div class="d-flex align-items-center justify-content-center p-5 g-3">
+    <a routerLink="/home" class="btn btn-sm mx-3">
+      &#8592;
+    </a>
+
+    <h2>Exercises</h2>
+  </div>
+
+  <div class="cards d-flex flex-wrap align-items-center justify-content-center">
+    @if(loading) {
+      <div class="text-light">Loading...</div>
+    }
+
+    @if(!loading) {
+      @for (exercise of exercises; track exercise.id) {
+        <app-card
+          [title]="exercise.name"
+          [image]="exercise.image"
+          (cardClick)="openExerciseModal(exercise)">
+        </app-card>
+      }
+    }
+  </div>
 </div>
+
+<!-- MODAL -->
+@if(showModal) {
+  <div
+    class="modal-backdrop-custom"
+    (click)="closeModal()">
+
+    <div
+      class="modal-content-custom"
+      (click)="$event.stopPropagation()">
+
+      <h3>
+        {{ selectedExercise?.name }}
+      </h3>
+
+      <form
+        [formGroup]="workoutForm"
+        (ngSubmit)="saveWorkout()">
+
+        <!-- WEIGHT -->
+        <div class="mb-3">
+          <label>Weight (kg)</label>
+
+          <input
+            type="number"
+            class="form-control"
+            formControlName="weight">
+        </div>
+
+        <!-- REPS -->
+        <div class="mb-3">
+          <label>Repetitions</label>
+
+          <input
+            type="number"
+            class="form-control"
+            formControlName="reps">
+        </div>
+
+        <!-- SETS -->
+        <div class="mb-3">
+          <label>Sets</label>
+
+          <input
+            type="number"
+            class="form-control"
+            formControlName="sets">
+        </div>
+
+        <!-- COMMENTS -->
+        <div class="mb-3">
+          <label>Notes</label>
+
+          <textarea
+            class="form-control"
+            formControlName="comments">
+          </textarea>
+        </div>
+
+        <div class="d-flex gap-2 justify-content-end">
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeModal()">
+
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="workoutForm.invalid">
+
+            Save workout
+          </button>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+}

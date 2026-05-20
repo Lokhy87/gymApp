@@ -1,50 +1,107 @@
 .contrail-one-regular {
-  font-family: "Contrail One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Contrail One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
+/* =========================
+   CONTAINER
+========================= */
 .login-container {
     min-height: 100vh;
-    background-image: url('/assets/images/inicio.png'); /*Pixabay Louis Bauer*/
+
+    background-image: url('/assets/images/inicio.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1.5rem;
 }
 
+/* =========================
+   LOGIN PANEL
+========================= */
 .login-menu {
-    background: rgba(0,0,0,0.55);
+    background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(6px);
-    border-radius: 16px;
-    width: 100%;
-    max-width: 500px;
+
+    width: min(90%, 480px);
+
+    border-radius: 20px;
+
+    padding: 2.5rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1rem;
 }
 
+/* =========================
+   TITLE
+========================= */
 h1 {
     color: #01a8bc;
-    font-family: 'Contrail One';
-    font-size: clamp(4rem, 6vw, 6rem);
+    font-family: 'Contrail One', sans-serif;
+
+    font-size: clamp(3rem, 5vw, 4.8rem);
+    line-height: 1;
+
+    margin: 0 0 1.5rem;
 }
 
+/* =========================
+   BUTTON
+========================= */
 .btn {
     background-color: #01a8bc;
     color: white;
-    font-size: clamp(1.5rem, 1.25vw, 2.5rem);
+
     width: 100%;
-    max-width: 220px;
+    max-width: 240px;
+
+    border: none;
+    border-radius: 12px;
+
+    padding: 0.9rem 1.5rem;
+
+    font-size: clamp(1rem, 1vw, 1.15rem);
+    font-weight: 600;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.2s ease;
 }
 
 .btn:hover {
     background-color: #01a8bc;
     color: white;
+    transform: translateY(-1px);
+    opacity: 0.95;
 }
 
-a {
-    color: white;
-}
-
-@media (max-width: 992px) {
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 576px) {
     .login-menu {
-        margin: 0 auto !important;
+        padding: 2rem 1.5rem;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: clamp(2.6rem, 10vw, 3.5rem);
+    }
+
+    .btn {
+        max-width: 100%;
     }
 }
